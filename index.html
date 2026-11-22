@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sayagin Apparel</title>
-<meta name="description" content="Sayagin Apparel — baju guru dengan corak dan warna ikut trend. Perniagaan berdaftar dari Pasir Mas, Kelantan. Tempah terus melalui WhatsApp.">
-<meta property="og:title" content="Sayagin Apparel — Baju Guru Ikut Trend">
-<meta property="og:description" content="Baju guru dengan corak dan warna ikut trend. Dari Pasir Mas, Kelantan. Pos seluruh Malaysia.">
-<meta property="og:image" content="assets/logo-original.png">
+<meta name="description" content="Sayagin Apparel — servis cetak baju & jersi custom, dan koleksi pakaian siap pakai. Dari Pasir Mas, Kelantan. WhatsApp 011-5773 7765.">
+<meta property="og:title" content="Sayagin Apparel — Cetak Ikut Cara Anda">
+<meta property="og:description" content="Servis cetak baju & jersi custom dari Pasir Mas, Kelantan. Pos seluruh Malaysia.">
+<meta property="og:image" content="assets/bunga-v2-duo.jpg">
 <meta name="theme-color" content="#FEC70A">
 <link rel="icon" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
@@ -90,6 +90,7 @@
   .trust span{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;background:rgba(255,255,255,.55);border:1.5px solid rgba(0,0,0,.15);padding:6px 10px;border-radius:999px}
   .hero-card{background:var(--black);border-radius:20px;padding:18px;transform:rotate(2deg);box-shadow:10px 10px 0 rgba(0,0,0,.18);transition:transform .3s}
   .hero-card:hover{transform:rotate(0)}
+  .hero-img{width:100%;height:auto;aspect-ratio:1024/864;object-fit:cover;object-position:center top;border-radius:12px}
   .hero-card .ph{aspect-ratio:4/5;border-radius:12px;background:repeating-linear-gradient(-45deg,#1c1c1c 0 16px,#232323 16px 32px);display:grid;place-items:center;color:#8a867e;font-size:.76rem;font-weight:600;text-align:center;padding:20px}
   .hero-card .ph img{width:38%;margin:0 auto 14px;filter:invert(79%) sepia(73%) saturate(1200%) hue-rotate(358deg) brightness(103%)}
   .hero-card .cap{display:flex;justify-content:space-between;align-items:center;color:#fff;margin-top:14px;font-weight:800;text-transform:uppercase;font-size:.82rem;letter-spacing:.04em}
@@ -100,7 +101,7 @@
     .hero .ctas{display:grid;grid-template-columns:1fr 1fr}
     .hero .ctas .btn{padding:14px 10px}
     .hero-card{transform:rotate(1.5deg)}
-    .hero-card .ph{aspect-ratio:16/10}
+    .hero-img{aspect-ratio:4/3}
   }
   @media (max-width:400px){.hero .ctas{grid-template-columns:1fr}}
 
@@ -120,10 +121,12 @@
   @media (max-width:860px){section{padding:60px 0}}
 
   /* ---------- Koleksi ---------- */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+  .code{font-size:.66rem;font-weight:800;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .disclaimer{font-size:.74rem;color:var(--muted);font-weight:600;margin-top:14px}
   .card{background:var(--surface);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s, box-shadow .15s}
   .card:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--yellow)}
-  .card .img{aspect-ratio:4/3;position:relative;border-bottom:2px solid var(--ink);background-size:cover;background-position:center}
+  .card .img{aspect-ratio:4/5;background-color:#e9e4f0;position:relative;border-bottom:2px solid var(--ink);background-size:cover;background-position:center top}
   .card .badge{position:absolute;left:12px;top:12px;background:var(--black);color:var(--yellow);font-size:.66rem;font-weight:800;padding:5px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.08em}
   .card .note{position:absolute;right:12px;bottom:12px;background:#fff;color:#111;font-size:.66rem;font-weight:600;padding:3px 9px;border-radius:999px}
   .pat-1{background:repeating-linear-gradient(135deg,var(--yellow) 0 18px,var(--yellow-soft) 18px 36px)}
@@ -154,6 +157,17 @@
   .dots i{width:8px;height:8px;border-radius:999px;background:var(--line);transition:all .2s}
   .dots i.on{width:22px;background:var(--ink)}
   @media (max-width:860px){.dots{display:flex}}
+
+  /* ---------- Servis ---------- */
+  .svc{padding-bottom:20px}
+  .svc-banner{border:2px solid var(--ink);border-radius:20px;overflow:hidden;margin-bottom:44px;box-shadow:8px 8px 0 var(--yellow)}
+  .svc-banner img{width:100%;aspect-ratio:2000/735;object-fit:cover}
+  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  @media (max-width:860px){.svc-grid{grid-template-columns:1fr;gap:20px}.svc-banner{margin-bottom:28px}.svc-banner img{aspect-ratio:16/9;object-position:72% center}}
+  .svc-list{list-style:none;display:grid;gap:12px}
+  .svc-list li{border:2px solid var(--line);border-left:8px solid var(--yellow);border-radius:12px;padding:16px 18px}
+  .svc-list b{display:block;text-transform:uppercase;font-weight:900;font-size:.92rem}
+  .svc-list span{color:var(--muted);font-size:.88rem;font-weight:500}
 
   /* ---------- Tentang ---------- */
   .about{background:var(--surface);border-block:2px solid var(--line)}
@@ -272,6 +286,7 @@
   <div class="wrap">
     <a href="#" class="logo" aria-label="Sayagin Apparel — ke atas"><img src="assets/logo-black.png" alt="Sayagin Apparel" width="124" height="34"></a>
     <div class="nav-links">
+      <a href="#servis">Servis Cetak</a>
       <a href="#koleksi">Koleksi</a>
       <a href="#tentang">Tentang</a>
       <a href="#tempah">Tempah</a>
@@ -284,6 +299,7 @@
   </div>
 </nav>
 <div class="mobile-menu" id="mmenu">
+  <a href="#servis">Servis Cetak</a>
   <a href="#koleksi">Koleksi</a>
   <a href="#tentang">Tentang Kami</a>
   <a href="#tempah">Cara Tempah</a>
@@ -294,14 +310,14 @@
 <header class="hero" id="top">
   <div class="wrap">
     <div>
-      <span class="eyebrow">Baju Guru · Pasir Mas, Kelantan</span>
-      <h1>Cikgu pun<br>boleh <span class="hl"><span>bergaya.</span></span></h1>
-      <p class="lead">Baju guru dengan corak dan warna ikut trend. Kemas untuk ke sekolah, selesa dari perhimpunan pagi sampai loceng terakhir.</p>
+      <span class="eyebrow">Cetak Baju · Jersi · Pakaian Custom</span>
+      <h1>Cetak ikut<br><span class="hl"><span>cara anda.</span></span></h1>
+      <p class="lead">Baju, jersi dan pakaian sedondon untuk syarikat, kelab, sekolah, program dan keluarga. Juga koleksi siap pakai kami sendiri. Dari Pasir Mas, Kelantan.</p>
       <div class="ctas">
-        <a class="btn btn-black" href="#tempah">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
-          Tempah Sekarang
-        </a>
+        <button type="button" class="btn btn-black" data-quote>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+          Dapatkan Sebut Harga
+        </button>
         <a class="btn btn-white" href="#koleksi">Lihat Koleksi</a>
       </div>
       <div class="trust">
@@ -309,31 +325,57 @@
       </div>
     </div>
     <div class="hero-card">
-      <div class="ph"><div><img src="assets/mark-black.png" alt="">Ganti dengan gambar model memakai koleksi terkini</div></div>
-      <div class="cap">Koleksi Terkini <small>Edisi 2026</small></div>
+      <img class="hero-img" src="assets/hero-bunga.jpg" alt="Model lelaki dan wanita memakai Bunga Collection V2 berwarna maroon dengan corak bunga di bahu" width="1024" height="864" fetchpriority="high">
+      <div class="cap">Koleksi Terkini <small>Bunga Collection V2</small></div>
     </div>
   </div>
 </header>
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>#BareLokalBoh</span><span>Baju Guru</span><span>Ikut Trend</span><span>Selesa Seharian</span><span>Tempahan Kumpulan</span><span>Dari Kelantan</span><span>Pos Seluruh Malaysia</span>
-    <span>#BareLokalBoh</span><span>Baju Guru</span><span>Ikut Trend</span><span>Selesa Seharian</span><span>Tempahan Kumpulan</span><span>Dari Kelantan</span><span>Pos Seluruh Malaysia</span>
+    <span>Cetak Ikut Cara Anda</span><span>Jersi Sublimasi</span><span>Baju Korporat</span><span>Tempahan Kumpulan</span><span>Air Tangan Anak Malaysia</span><span>#BareLokalBoh</span><span>Pos Seluruh Malaysia</span>
+    <span>Cetak Ikut Cara Anda</span><span>Jersi Sublimasi</span><span>Baju Korporat</span><span>Tempahan Kumpulan</span><span>Air Tangan Anak Malaysia</span><span>#BareLokalBoh</span><span>Pos Seluruh Malaysia</span>
   </div>
 </div>
+
+<section id="servis" class="svc">
+  <div class="wrap">
+    <div class="svc-banner reveal">
+      <img onerror="this.parentNode.remove()" src="assets/banner-cetak.jpg" alt="Papan iklan kedai Sayagin Apparel: Jom, cetak baju di sini! Kami menawarkan servis cetak baju dan jersi." loading="lazy" width="2000" height="735">
+    </div>
+    <div class="svc-grid">
+      <div class="head reveal">
+        <span class="eyebrow">Servis Cetak</span>
+        <h2>Cetak ikut cara anda</h2>
+        <p>Jom, cetak baju di sini! Kami menawarkan servis cetak baju dan jersi untuk sekolah, syarikat, kelab, program dan keluarga.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+          <button type="button" class="btn btn-black" data-quote>Dapatkan Sebut Harga</button>
+          <a class="btn btn-white" href="tel:+601157737765">Telefon 011-5773 7765</a>
+        </div>
+      </div>
+      <ul class="svc-list reveal">
+        <li><b>Baju & T-shirt</b><span>Cetak logo, nama atau rekaan anda sendiri.</span></li>
+        <li><b>Jersi sublimasi</b><span>Kolar polo atau leher bulat, lengan pendek atau panjang.</span></li>
+        <li><b>Baju korporat & sekolah</b><span>Sedondon untuk pejabat, sekolah, persatuan atau keluarga.</span></li>
+        <li><b>Tempahan kumpulan</b><span>Harga ikut kuantiti. Beritahu kami tarikh yang diperlukan.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <section id="koleksi">
   <div class="wrap">
     <div class="head-row">
       <div class="head reveal">
-        <span class="eyebrow">Koleksi</span>
-        <h2>Dipilih untuk rutin seorang cikgu</h2>
-        <p>Pilih saiz dan warna, kemudian tekan <b>Tempah</b>. Pilihan anda terus masuk ke borang tempahan.</p>
+        <span class="eyebrow">Koleksi Siap Pakai</span>
+        <h2>Bunga Collection V2</h2>
+        <p>Rekaan keluaran terhad kami sendiri. Pilih saiz dan warna, kemudian tekan <b>Tempah</b>. Pilihan anda terus masuk ke borang.</p>
       </div>
       <span class="scroll-hint">Leret untuk lihat lagi →</span>
     </div>
     <div class="grid" id="grid"></div>
     <div class="dots" id="dots" aria-hidden="true"></div>
+    <p class="disclaimer">Gambar sekadar ilustrasi. Rekaan keluaran terhad, air tangan Anak Malaysia.</p>
   </div>
 </section>
 
@@ -341,9 +383,9 @@
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Tentang Kami</span>
-      <h2 style="font-size:clamp(1.9rem,4.4vw,3rem);margin-top:14px">Dari Pasir Mas untuk cikgu seluruh Malaysia</h2>
-      <p>Sayagin Apparel ialah perniagaan pakaian dari Pasir Mas, Kelantan, yang menumpukan kepada baju guru. Kami percaya cikgu layak tampil kemas dan yakin setiap hari, dengan pakaian yang selesa dan rekaan yang mengikut trend.</p>
-      <p>Kami menjual secara dalam talian dan secara terus. Ikuti kami untuk koleksi terbaharu.</p>
+      <h2 style="font-size:clamp(1.9rem,4.4vw,3rem);margin-top:14px">Dari Pasir Mas ke seluruh Malaysia</h2>
+      <p>Sayagin Apparel ialah kedai cetak pakaian dari Pasir Mas, Kelantan. Kami membantu individu, syarikat dan organisasi menghasilkan baju dan jersi mengikut rekaan sendiri, dan turut mengeluarkan koleksi siap pakai seperti Bunga Collection.</p>
+      <p>Setiap rekaan ialah air tangan Anak Malaysia.</p>
       <p class="hashtag">Sokong produk tempatan. <span>#barelokalboh</span></p>
       <div class="socials">
         <a class="btn btn-black btn-sm" href="https://www.tiktok.com/@sayaginapparel" target="_blank" rel="noopener">
@@ -355,8 +397,8 @@
     <div class="facts reveal">
       <div class="fact y"><b>2023</b><span>Tahun ditubuhkan</span></div>
       <div class="fact"><b>SSM</b><span>202303081418 (KT0543254-V)</span></div>
-      <div class="fact"><b>Pasir Mas</b><span>Kelantan, Malaysia</span></div>
-      <div class="fact y"><b>Baju Guru</b><span>Fokus utama kami</span></div>
+      <div class="fact"><b>Pasir Mas</b><span>Kedai cetak pakaian, Kelantan</span></div>
+      <div class="fact y"><b>011-5773 7765</b><span>Hubungi / WhatsApp</span></div>
     </div>
   </div>
 </section>
@@ -365,12 +407,12 @@
   <div class="wrap">
     <div class="head reveal">
       <span class="eyebrow">Kenapa Sayagin</span>
-      <h2>Direka dengan cikgu dalam fikiran</h2>
+      <h2>Dibuat teliti, air tangan Anak Malaysia</h2>
     </div>
     <div class="features">
-      <div class="feat reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20.6 13.4 12 22l-8.6-8.6a5 5 0 0 1 7-7.1L12 7.9l1.6-1.6a5 5 0 0 1 7 7.1Z"/></svg></div><h3>Selesa seharian</h3><p>Mudah bergerak, sesuai untuk berdiri dan mengajar lama.</p></div>
-      <div class="feat reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8Z"/></svg></div><h3>Ikut trend</h3><p>Corak dan warna sentiasa dikemas kini mengikut gaya semasa.</p></div>
-      <div class="feat reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3>Tempahan kumpulan</h3><p>Sedondon untuk satu sekolah, panitia atau program.</p></div>
+      <div class="feat reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20.6 13.4 12 22l-8.6-8.6a5 5 0 0 1 7-7.1L12 7.9l1.6-1.6a5 5 0 0 1 7 7.1Z"/></svg></div><h3>Rekaan custom</h3><p>Bawa idea, logo atau rekaan anda. Kami bantu jadikan baju.</p></div>
+      <div class="feat reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8Z"/></svg></div><h3>Koleksi ikut trend</h3><p>Rekaan siap pakai keluaran terhad, dikemas kini mengikut gaya semasa.</p></div>
+      <div class="feat reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3>Tempahan kumpulan</h3><p>Sedondon untuk syarikat, kelab, sekolah atau program.</p></div>
       <div class="feat reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Terus ke WhatsApp</h3><p>Tiada akaun, tiada troli. Urusan terus dengan kami.</p></div>
     </div>
   </div>
@@ -395,7 +437,7 @@
       <h3>Borang Tempahan</h3>
       <p>Mengambil masa kurang dari 1 minit.</p>
       <div class="form-grid">
-        <div class="field full"><label for="f-name">Nama</label><input id="f-name" name="name" autocomplete="name" placeholder="Cth: Cikgu Aina" required></div>
+        <div class="field full"><label for="f-name">Nama</label><input id="f-name" name="name" autocomplete="name" placeholder="Cth: Aina" required></div>
         <div class="field full"><label for="f-prod">Rekaan</label><select id="f-prod" name="product"></select></div>
         <div class="field"><label for="f-size">Saiz</label><select id="f-size" name="size"></select></div>
         <div class="field"><label for="f-color">Warna</label><select id="f-color" name="color"></select></div>
@@ -403,7 +445,7 @@
           <div class="qty"><button type="button" data-q="-1" aria-label="Kurang">−</button><input id="f-qty" name="qty" type="number" inputmode="numeric" min="1" value="1"><button type="button" data-q="1" aria-label="Tambah">+</button></div>
         </div>
         <div class="field"><label for="f-state">Negeri</label><select id="f-state" name="state"></select></div>
-        <div class="field full"><label for="f-note">Catatan (pilihan)</label><textarea id="f-note" name="note" placeholder="Cth: tempahan untuk 20 orang guru, perlu sebelum 15 Disember"></textarea></div>
+        <div class="field full"><label for="f-note">Catatan (pilihan)</label><textarea id="f-note" name="note" placeholder="Cth: 30 helai jersi dengan logo syarikat, perlu sebelum 15 Disember"></textarea></div>
       </div>
       <button class="btn btn-black" type="submit">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3Z"/></svg>
@@ -422,9 +464,10 @@
       <p>Tak jumpa jawapan? <a class="wa-link" href="#" style="font-weight:800">Tanya kami di WhatsApp</a>.</p>
     </div>
     <div class="reveal">
+      <details><summary>Ada minimum tempahan untuk servis cetak?</summary><p>[Isi kuantiti minimum, jika ada.]</p></details>
       <details><summary>Ada saiz apa?</summary><p>[Isi senarai saiz anda dan carta ukuran.]</p></details>
       <details><summary>Berapa lama penghantaran?</summary><p>[Isi anggaran tempoh pos untuk Semenanjung dan Sabah/Sarawak.]</p></details>
-      <details><summary>Boleh tempah untuk satu sekolah?</summary><p>Boleh. Isi borang tempahan dengan anggaran kuantiti dan tarikh yang diperlukan, dan kami akan beri sebut harga.</p></details>
+      <details><summary>Boleh buat tempahan kumpulan?</summary><p>Boleh. Isi borang tempahan dengan anggaran kuantiti dan tarikh yang diperlukan, dan kami akan beri sebut harga.</p></details>
       <details><summary>Boleh ambil sendiri di Pasir Mas?</summary><p>[Isi sama ada pelanggan boleh ambil sendiri, dan lokasinya.]</p></details>
       <details><summary>Cara bayaran?</summary><p>[Isi kaedah bayaran yang diterima, contoh pindahan bank atau DuitNow QR.]</p></details>
     </div>
@@ -434,8 +477,8 @@
 <div class="cta">
   <div class="wrap">
     <div class="box reveal">
-      <h2>Sedia untuk tampil kemas minggu ini?</h2>
-      <p>Tempah sekarang, atau ikuti kami di TikTok untuk koleksi baharu. <b>#barelokalboh</b></p>
+      <h2>Ada rekaan dalam kepala? Jom cetak.</h2>
+      <p>WhatsApp kami untuk sebut harga, atau ikuti kami di TikTok untuk koleksi baharu. <b>#barelokalboh</b></p>
       <div class="ctas">
         <a class="btn btn-black" href="#tempah">Tempah Sekarang</a>
         <a class="btn btn-white" href="https://www.tiktok.com/@sayaginapparel" target="_blank" rel="noopener">@sayaginapparel</a>
@@ -449,7 +492,7 @@
   <div class="wrap">
     <div class="brand">
       <img src="assets/logo-white.png" alt="Sayagin Apparel" width="139" height="38">
-      <p>Baju guru dengan corak dan warna ikut trend. Dari Pasir Mas, Kelantan.</p>
+      <p>Servis cetak baju &amp; jersi, dan koleksi pakaian siap pakai. Dari Pasir Mas, Kelantan.</p>
       <p style="color:var(--yellow);font-weight:900;margin-top:10px">#barelokalboh</p>
     </div>
     <div>
@@ -459,7 +502,8 @@
     <div>
       <h4>Hubungi</h4>
       <ul>
-        <li><a class="wa-link" href="#">WhatsApp</a></li>
+        <li><a class="wa-link" href="#">WhatsApp 011-5773 7765</a></li>
+        <li><a href="tel:+601157737765">Telefon 011-5773 7765</a></li>
         <li><a href="https://www.tiktok.com/@sayaginapparel" target="_blank" rel="noopener">TikTok</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61554642539469" target="_blank" rel="noopener">Facebook</a></li>
       </ul>
@@ -483,19 +527,21 @@
    EDIT DI SINI SAHAJA — semua maklumat kedai
    ===================================================================== */
 const CONFIG = {
-  whatsapp: "60XXXXXXXXX",            // format 60XXXXXXXXX, tanpa + atau sengkang
+  whatsapp: "601157737765",            // format 60XXXXXXXXX, tanpa + atau sengkang
   sizes: ["XS","S","M","L","XL","2XL","3XL"],
   states: ["Kelantan","Terengganu","Pahang","Kedah","Perlis","Pulau Pinang","Perak","Selangor","W.P. Kuala Lumpur","W.P. Putrajaya","Negeri Sembilan","Melaka","Johor","Sabah","Sarawak","W.P. Labuan"],
   products: [
-    { name:"Baju Kurung Guru", desc:"Potongan kemas dengan corak terkini, sesuai untuk hari persekolahan biasa.",
-      price:"RM __", badge:"Terlaris", image:"", pattern:1, colors:["Kuning","Hitam","Maroon","Biru Laut"] },
-    { name:"Set Warna Tema", desc:"Warna sedondon untuk hari tema sekolah, majlis atau sambutan bersama rakan guru.",
-      price:"RM __", badge:"Baharu", image:"", pattern:2, colors:["Kuning","Hijau","Ungu","Merah Jambu"] },
-    { name:"Tempahan Kumpulan", desc:"Untuk sekolah, panitia, PIBG atau kelab. Harga ikut kuantiti dan tarikh siap.",
-      price:"Ikut kuantiti", badge:"Sekolah", image:"", pattern:3, colors:["Pilih kemudian"] },
+    { code:"V2", name:"Polo Kolar Bunga", desc:"Polo lengan pendek, kolar hitam dengan corak bunga di bahu. Bunga Collection V2.",
+      price:"RM __", badge:"Lelaki", image:"assets/p-polo.jpg", colors:["Maroon"] },
+    { code:"GDR-2", name:"Blaus Muslimah Bunga", desc:"Blaus labuh lengan panjang, potongan longgar dan sopan. Bunga Collection.",
+      price:"RM __", badge:"Muslimah", image:"assets/p-gdr2.jpg", colors:["Maroon"] },
+    { code:"GDR-3", name:"Lengan Panjang Leher Bulat", desc:"Baju lengan panjang leher bulat, sesuai untuk lelaki dan wanita. Bunga Collection.",
+      price:"RM __", badge:"Unisex", image:"assets/p-gdr3.jpg", colors:["Maroon"] },
+    { code:"", name:"Cetak Baju & Jersi Custom", desc:"Cetak rekaan sendiri untuk sekolah, syarikat, kelab atau program. Harga ikut kuantiti.",
+      price:"Ikut kuantiti", badge:"Servis Cetak", image:"", pattern:3, colors:["Ikut rekaan"] },
   ],
 };
-/* Nota: warna di atas hanyalah contoh — tukar ikut stok sebenar.
+/* Nota: senarai saiz di atas hanyalah contoh — tukar ikut stok sebenar.
    Untuk gambar, letak fail dalam folder assets/ dan isi image:"assets/nama-fail.jpg" */
 /* ===================================================================== */
 
@@ -518,12 +564,13 @@ CONFIG.products.forEach((p, i) => {
   const card = document.createElement("article");
   card.className = "card reveal";
   const media = p.image
-    ? `<div class="img" style="background-image:url('${p.image}')"><span class="badge">${p.badge||""}</span></div>`
+    ? `<div class="img" role="img" aria-label="${p.name}" style="background-image:url('${p.image}')"><span class="badge">${p.badge||""}</span></div>`
     : `<div class="img pat-${p.pattern||1}"><span class="badge">${p.badge||""}</span><span class="note">Gambar produk</span></div>`;
   const sizeChips = CONFIG.sizes.map(s=>`<button type="button" class="chip" data-k="size" aria-pressed="false">${s}</button>`).join("");
   const colorChips = p.colors.map(c=>`<button type="button" class="chip" data-k="color" aria-pressed="false">${c}</button>`).join("");
   card.innerHTML = `${media}
     <div class="body">
+      ${p.code?`<span class="code">Kod: ${p.code}</span>`:""}
       <h3>${p.name}</h3>
       <p>${p.desc}</p>
       <div><div class="opt-label">Saiz</div><div class="chips">${sizeChips}</div></div>
@@ -566,6 +613,13 @@ grid.addEventListener("scroll", () => requestAnimationFrame(updateDots), {passiv
 updateDots();
 
 /* ---------- Order form ---------- */
+document.addEventListener("click", e => {
+  if (!e.target.closest("[data-quote]")) return;
+  $("#f-prod").value = "Cetak Baju & Jersi Custom"; fillColors();
+  $("#tempah").scrollIntoView({behavior:"smooth"});
+  setTimeout(()=>$("#f-name").focus({preventScroll:true}), 600);
+  toast("Servis cetak dipilih. Ceritakan rekaan anda di ruang catatan.");
+});
 const opt = (sel, arr) => { sel.innerHTML = arr.map(v=>`<option>${v}</option>`).join(""); };
 opt($("#f-prod"), CONFIG.products.map(p=>p.name));
 opt($("#f-size"), CONFIG.sizes);
@@ -613,7 +667,7 @@ const secObs = new IntersectionObserver(entries => {
     links.forEach(l => l.classList.toggle("active", l.getAttribute("href")==="#"+en.target.id));
   }});
 }, {rootMargin:"-45% 0px -50% 0px"});
-["koleksi","tentang","tempah","soalan"].forEach(id => secObs.observe(document.getElementById(id)));
+["koleksi","servis","tentang","tempah","soalan"].forEach(id => secObs.observe(document.getElementById(id)));
 
 /* show floating actions after hero, hide while order form visible */
 let pastHero = false, formVisible = false;
