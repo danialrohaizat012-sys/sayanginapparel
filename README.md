@@ -1,12 +1,21 @@
 # Sayagin Apparel — Landing Page
 
-Landing page (`index.html`) untuk Sayagin Apparel — baju guru dari Pasir Mas, Kelantan. Identiti jenama: kuning #FEC70A + hitam #111111, fon Montserrat. Logo dalam `assets/`.
+Landing page (`index.html`) untuk Sayagin Apparel — baju guru dari Pasir Mas, Kelantan. #barelokalboh
 
-## Perlu diisi sebelum guna
-1. **Nombor WhatsApp** — dalam `<script>` di bawah fail: `const WHATSAPP = "60XXXXXXXXX";`
-2. **Harga** — tukar `RM __` pada kad produk.
-3. **Gambar produk** — ganti kotak bercorak dengan gambar sebenar.
-4. **Soalan Lazim** — isi jawapan dalam `[...]`.
+Identiti jenama: kuning `#FEC70A` + hitam `#111111`, fon Montserrat. Logo dalam `assets/`.
 
-## Online-kan dengan GitHub Pages
-Settings → Pages → Source: *Deploy from a branch* → Branch: `main` / `(root)` → Save.
+## Cara edit
+Semua maklumat kedai ada dalam objek `CONFIG` di bahagian `<script>` bawah `index.html`:
+
+- `whatsapp` — nombor WhatsApp (format `60XXXXXXXXX`). **Wajib diisi.**
+- `sizes` — senarai saiz.
+- `products` — nama, keterangan, harga, label, warna dan gambar setiap produk.
+  Untuk gambar, letak fail dalam `assets/` dan isi `image: "assets/nama-fail.jpg"`.
+
+Jawapan Soalan Lazim yang bertanda `[...]` juga perlu diisi.
+
+## Ciri
+- Borang tempahan yang menyusun mesej WhatsApp secara automatik
+- Pilihan saiz & warna pada kad produk terus masuk ke borang
+- Menu telefon, carousel produk, bar tindakan bawah di telefon
+- Mod gelap, animasi lembut (dimatikan jika pengguna pilih kurang gerakan)
