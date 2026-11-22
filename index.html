@@ -286,6 +286,12 @@
   footer ul{list-style:none;display:grid;gap:4px}
   footer ul a{text-decoration:none;display:inline-block;padding:4px 0}
   footer a:hover{color:var(--yellow)}
+  footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+  .binalab{text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border:1px solid #2b2a27;border-radius:999px;color:#c9c5bc;font-size:.76rem;font-weight:600;transition:border-color .15s, color .15s}
+  .binalab img{width:22px;height:22px;border-radius:6px}
+  .binalab b{color:#fff;font-weight:800}
+  .binalab b.g{color:#22C55E}
+  .binalab:hover{border-color:#22C55E;color:#fff}
   footer .legal{grid-column:1/-1;border-top:1px solid #2b2a27;padding-top:20px;font-size:.76rem;color:#8a867e}
 
   /* ---------- Floating actions ---------- */
@@ -567,7 +573,12 @@
         <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Sayagin+Apparel+Pasir+Mas+Kelantan" target="_blank" rel="noopener">Lokasi kedai</a></li>
       </ul>
     </div>
-    <div class="legal">© <span id="yr"></span> Sayagin Apparel (202303081418 / KT0543254-V) · Pasir Mas, Kelantan, Malaysia</div>
+    <div class="legal">
+      <span>© <span id="yr"></span> Sayagin Apparel (202303081418 / KT0543254-V) · Pasir Mas, Kelantan, Malaysia</span>
+      <a class="binalab" href="https://binalab.my/" target="_blank" rel="noopener" aria-label="Laman web dibina oleh BinaLab">
+        <img src="assets/binalab-icon.png" alt="" width="22" height="22"><span>Dibina oleh <b>Bina</b><b class="g">Lab</b></span>
+      </a>
+    </div>
   </div>
 </footer>
 
