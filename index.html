@@ -183,29 +183,6 @@
   .svc-list b{display:block;text-transform:uppercase;font-weight:900;font-size:.92rem}
   .svc-list span{color:var(--muted);font-size:.88rem;font-weight:500}
 
-  /* Kalkulator */
-  .calc{margin-top:48px;border:2px solid var(--ink);border-radius:20px;padding:28px;background:var(--surface)}
-  .calc-head h3{font-size:clamp(1.3rem,3vw,1.8rem);margin-top:12px}
-  .calc-head p{color:var(--muted);font-weight:500;margin-top:6px}
-  .calc-body{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:28px;margin-top:22px;align-items:start}
-  @media (max-width:900px){.calc-body{grid-template-columns:1fr;gap:20px}.calc{padding:20px}}
-  .calc fieldset{border:0}
-  .calc legend{margin-bottom:8px}
-  .calc-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-  .calc-row output{font-weight:900;font-size:1.2rem}
-  .calc input[type=range]{width:100%;accent-color:#111;height:28px}
-  :root[data-theme="dark"] .calc input[type=range]{accent-color:var(--yellow)}
-  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .calc input[type=range]{accent-color:var(--yellow)}}
-  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
-  .tiers div{border:1.5px solid var(--line);border-radius:8px;padding:6px;text-align:center;font-size:.66rem;font-weight:700;color:var(--muted);line-height:1.3}
-  .tiers div b{display:block;color:var(--ink);font-size:.8rem}
-  .tiers div.on{background:var(--yellow);border-color:#111;color:#111}
-  .tiers div.on b{color:#111}
-  .calc-result{background:#111;color:#fff;border-radius:14px;padding:18px;display:grid;gap:12px}
-  .calc-result small{display:block;font-size:.64rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#a9a59c}
-  .calc-result b{font-size:1.6rem;font-weight:900;color:var(--yellow);line-height:1.1}
-  .calc-result .btn{background:var(--yellow);color:#111;border-color:var(--yellow);width:100%}
-
   /* Lightbox */
   .work figure{cursor:zoom-in}
   .lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,900px);max-height:92vh;margin:auto;overflow:visible}
@@ -433,31 +410,6 @@
         <li><b>Tempahan kumpulan</b><span>Anggaran dari RM 26/helai, bergantung pada kuantiti. Beritahu kami tarikh yang diperlukan.</span></li>
       </ul>
     </div>
-    <div class="calc reveal" id="kalkulator">
-      <div class="calc-head">
-        <span class="eyebrow">Kalkulator Harga</span>
-        <h3>Anggarkan kos cetakan anda</h3>
-        <p>Pilih jenis dan kuantiti. Lebih banyak helai, lebih murah sehelai.</p>
-      </div>
-      <div class="calc-body">
-        <fieldset class="calc-types">
-          <legend class="opt-label">Jenis</legend>
-          <div class="chips" id="calcTypes"></div>
-        </fieldset>
-        <div class="calc-qty">
-          <div class="calc-row"><label class="opt-label" for="calcQty">Kuantiti</label><output id="calcQtyOut">30 helai</output></div>
-          <input type="range" id="calcQty" min="10" max="300" step="5" value="30">
-          <div class="tiers" id="calcTiers"></div>
-        </div>
-        <div class="calc-result">
-          <div><small>Harga sehelai</small><b id="calcEach">RM 0</b></div>
-          <div><small>Jumlah anggaran</small><b id="calcTotal">RM 0</b></div>
-          <button type="button" class="btn btn-black" id="calcSend">Minta Sebut Harga</button>
-        </div>
-      </div>
-      <p class="disclaimer">Anggaran sahaja. Harga sebenar bergantung pada rekaan, fabrik dan saiz.</p>
-    </div>
-
     <div class="work reveal">
       <div class="work-head"><h3>Hasil cetakan kami</h3><span>Rekabentuk keluaran terhad · Air tangan Anak Malaysia</span></div>
       <div class="work-grid">
@@ -724,41 +676,6 @@ const updateDots = () => {
 grid.addEventListener("scroll", () => requestAnimationFrame(updateDots), {passive:true});
 updateDots();
 
-/* ---------- Kalkulator harga (anggaran) ---------- */
-const CALC = {
-  types: [ {name:"T-shirt", add:0}, {name:"Jersi Polo", add:6}, {name:"Lengan Panjang", add:8} ],
-  tiers: [ {min:10, price:34}, {min:30, price:31}, {min:50, price:29}, {min:100, price:26} ], // harga asas sehelai
-};
-let calcType = 1;
-const fmtRM = n => "RM " + n.toLocaleString("ms-MY");
-$("#calcTypes").innerHTML = CALC.types.map((t,i)=>`<button type="button" class="chip" data-t="${i}" aria-pressed="${i===calcType}">${t.name}</button>`).join("");
-$("#calcTiers").innerHTML = CALC.tiers.map(t=>`<div><b>${t.min}+</b>helai</div>`).join("");
-function calc(){
-  const q = +$("#calcQty").value, t = CALC.types[calcType];
-  let ti = 0; CALC.tiers.forEach((x,i)=>{ if (q>=x.min) ti=i; });
-  const each = CALC.tiers[ti].price + t.add;
-  $("#calcQtyOut").textContent = q + " helai";
-  $("#calcEach").textContent = fmtRM(each);
-  $("#calcTotal").textContent = fmtRM(each*q);
-  $$("#calcTiers div").forEach((d,i)=>d.classList.toggle("on", i===ti));
-  return {q, t, each};
-}
-$("#calcTypes").addEventListener("click", e => {
-  const b = e.target.closest(".chip"); if (!b) return;
-  calcType = +b.dataset.t;
-  $$("#calcTypes .chip").forEach(c=>c.setAttribute("aria-pressed", c===b)); calc();
-});
-$("#calcQty").addEventListener("input", calc);
-$("#calcSend").addEventListener("click", () => {
-  const {q, t, each} = calc();
-  $("#f-prod").value = "Cetak Baju & Jersi Custom"; fillColors();
-  $("#f-qty").value = q;
-  $("#f-note").value = `Jenis: ${t.name}. Anggaran kalkulator: ${fmtRM(each)} sehelai, jumlah ${fmtRM(each*q)}.`;
-  $("#tempah").scrollIntoView({behavior:"smooth"});
-  setTimeout(()=>$("#f-name").focus({preventScroll:true}), 600);
-  toast("Butiran kalkulator dimasukkan ke borang");
-});
-
 /* ---------- Lightbox ---------- */
 const lb = $("#lightbox");
 const openLb = fig => {
@@ -844,7 +761,6 @@ const revObs = new IntersectionObserver(entries => entries.forEach(en => {
 $$(".reveal").forEach((el,i) => { el.style.transitionDelay = (i%4)*60+"ms"; revObs.observe(el); });
 
 $("#yr").textContent = new Date().getFullYear();
-calc();
 </script>
 </body>
 </html>
