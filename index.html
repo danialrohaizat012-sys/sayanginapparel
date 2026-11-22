@@ -183,6 +183,41 @@
   .svc-list b{display:block;text-transform:uppercase;font-weight:900;font-size:.92rem}
   .svc-list span{color:var(--muted);font-size:.88rem;font-weight:500}
 
+  /* Kalkulator */
+  .calc{margin-top:48px;border:2px solid var(--ink);border-radius:20px;padding:28px;background:var(--surface)}
+  .calc-head h3{font-size:clamp(1.3rem,3vw,1.8rem);margin-top:12px}
+  .calc-head p{color:var(--muted);font-weight:500;margin-top:6px}
+  .calc-body{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:28px;margin-top:22px;align-items:start}
+  @media (max-width:900px){.calc-body{grid-template-columns:1fr;gap:20px}.calc{padding:20px}}
+  .calc fieldset{border:0}
+  .calc legend{margin-bottom:8px}
+  .calc-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+  .calc-row output{font-weight:900;font-size:1.2rem}
+  .calc input[type=range]{width:100%;accent-color:#111;height:28px}
+  :root[data-theme="dark"] .calc input[type=range]{accent-color:var(--yellow)}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .calc input[type=range]{accent-color:var(--yellow)}}
+  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+  .tiers div{border:1.5px solid var(--line);border-radius:8px;padding:6px;text-align:center;font-size:.66rem;font-weight:700;color:var(--muted);line-height:1.3}
+  .tiers div b{display:block;color:var(--ink);font-size:.8rem}
+  .tiers div.on{background:var(--yellow);border-color:#111;color:#111}
+  .tiers div.on b{color:#111}
+  .calc-result{background:#111;color:#fff;border-radius:14px;padding:18px;display:grid;gap:12px}
+  .calc-result small{display:block;font-size:.64rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#a9a59c}
+  .calc-result b{font-size:1.6rem;font-weight:900;color:var(--yellow);line-height:1.1}
+  .calc-result .btn{background:var(--yellow);color:#111;border-color:var(--yellow);width:100%}
+
+  /* Lightbox */
+  .work figure{cursor:zoom-in}
+  .lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,900px);max-height:92vh;margin:auto;overflow:visible}
+  .lightbox::backdrop{background:rgba(0,0,0,.85)}
+  .lightbox img{max-width:100%;max-height:82vh;border-radius:14px;border:2px solid var(--yellow);display:block}
+  .lightbox p{color:var(--yellow);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;margin-top:10px;text-align:center}
+  .lb-close{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;border:2px solid #111;background:var(--yellow);color:#111;font-size:1.6rem;font-weight:900;cursor:pointer;line-height:1}
+
+  .fact-link{text-decoration:none;transition:transform .15s, box-shadow .15s}
+  .fact-link:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+  @media (max-width:540px){.svc .btn{width:100%}}
+
   .work{margin-top:48px}
   .work-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:8px;margin-bottom:16px}
   .work-head h3{font-size:1.3rem}
@@ -303,6 +338,18 @@
     *{transition:none !important}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ClothingStore",
+  "name":"Sayagin Apparel",
+  "description":"Servis cetak baju & jersi custom dan koleksi pakaian siap pakai.",
+  "telephone":"+601157737765",
+  "image":"assets/logo-original.png",
+  "address":{"@type":"PostalAddress","addressLocality":"Pasir Mas","addressRegion":"Kelantan","addressCountry":"MY"},
+  "sameAs":["https://www.tiktok.com/@sayaginapparel","https://www.facebook.com/profile.php?id=61554642539469"]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -383,14 +430,39 @@
         <li><b>Baju & T-shirt</b><span>Cetak logo, nama atau rekaan anda sendiri.</span></li>
         <li><b>Jersi sublimasi</b><span>Kolar polo atau leher bulat, lengan pendek atau panjang.</span></li>
         <li><b>Baju korporat & sekolah</b><span>Sedondon untuk pejabat, sekolah, persatuan atau keluarga.</span></li>
-        <li><b>Tempahan kumpulan</b><span>Anggaran dari RM 28/helai, bergantung pada kuantiti. Beritahu kami tarikh yang diperlukan.</span></li>
+        <li><b>Tempahan kumpulan</b><span>Anggaran dari RM 26/helai, bergantung pada kuantiti. Beritahu kami tarikh yang diperlukan.</span></li>
       </ul>
     </div>
+    <div class="calc reveal" id="kalkulator">
+      <div class="calc-head">
+        <span class="eyebrow">Kalkulator Harga</span>
+        <h3>Anggarkan kos cetakan anda</h3>
+        <p>Pilih jenis dan kuantiti. Lebih banyak helai, lebih murah sehelai.</p>
+      </div>
+      <div class="calc-body">
+        <fieldset class="calc-types">
+          <legend class="opt-label">Jenis</legend>
+          <div class="chips" id="calcTypes"></div>
+        </fieldset>
+        <div class="calc-qty">
+          <div class="calc-row"><label class="opt-label" for="calcQty">Kuantiti</label><output id="calcQtyOut">30 helai</output></div>
+          <input type="range" id="calcQty" min="10" max="300" step="5" value="30">
+          <div class="tiers" id="calcTiers"></div>
+        </div>
+        <div class="calc-result">
+          <div><small>Harga sehelai</small><b id="calcEach">RM 0</b></div>
+          <div><small>Jumlah anggaran</small><b id="calcTotal">RM 0</b></div>
+          <button type="button" class="btn btn-black" id="calcSend">Minta Sebut Harga</button>
+        </div>
+      </div>
+      <p class="disclaimer">Anggaran sahaja. Harga sebenar bergantung pada rekaan, fabrik dan saiz.</p>
+    </div>
+
     <div class="work reveal">
       <div class="work-head"><h3>Hasil cetakan kami</h3><span>Rekabentuk keluaran terhad · Air tangan Anak Malaysia</span></div>
       <div class="work-grid">
-        <figure><img src="assets/work-jersi-1.jpg" alt="Jersi polo hitam dan emas cetakan sublimasi Sayagin Apparel" loading="lazy"><figcaption>Jersi polo sublimasi · Hitam &amp; emas</figcaption></figure>
-        <figure><img src="assets/work-jersi-2.jpg" alt="Jersi polo motorsport hitam dan hijau cetakan sublimasi Sayagin Apparel" loading="lazy"><figcaption>Jersi polo sublimasi · Motorsport</figcaption></figure>
+        <figure tabindex="0" role="button" aria-label="Besarkan gambar jersi hitam dan emas"><img src="assets/work-jersi-1.jpg" alt="Jersi polo hitam dan emas cetakan sublimasi Sayagin Apparel" loading="lazy"><figcaption>Jersi polo sublimasi · Hitam &amp; emas</figcaption></figure>
+        <figure tabindex="0" role="button" aria-label="Besarkan gambar jersi motorsport"><img src="assets/work-jersi-2.jpg" alt="Jersi polo motorsport hitam dan hijau cetakan sublimasi Sayagin Apparel" loading="lazy"><figcaption>Jersi polo sublimasi · Motorsport</figcaption></figure>
       </div>
     </div>
   </div>
@@ -430,7 +502,7 @@
     <div class="facts reveal">
       <div class="fact y"><b>2023</b><span>Tahun ditubuhkan</span></div>
       <div class="fact"><b>SSM</b><span>202303081418 (KT0543254-V)</span></div>
-      <div class="fact"><b>Pasir Mas</b><span>Kedai cetak pakaian, Kelantan</span></div>
+      <a class="fact fact-link" href="https://www.google.com/maps/search/?api=1&amp;query=Sayagin+Apparel+Pasir+Mas+Kelantan" target="_blank" rel="noopener"><b>Pasir Mas</b><span>Lihat di Google Maps →</span></a>
       <div class="fact y"><b>011-5773 7765</b><span>Hubungi / WhatsApp</span></div>
     </div>
   </div>
@@ -540,6 +612,7 @@
         <li><a href="tel:+601157737765">Telefon 011-5773 7765</a></li>
         <li><a href="https://www.tiktok.com/@sayaginapparel" target="_blank" rel="noopener">TikTok</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61554642539469" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Sayagin+Apparel+Pasir+Mas+Kelantan" target="_blank" rel="noopener">Lokasi kedai</a></li>
       </ul>
     </div>
     <div class="legal">© <span id="yr"></span> Sayagin Apparel (202303081418 / KT0543254-V) · Pasir Mas, Kelantan, Malaysia</div>
@@ -555,6 +628,11 @@
   <a class="btn btn-black" href="#tempah">Tempah Sekarang</a>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<dialog class="lightbox" id="lightbox" aria-label="Paparan gambar">
+  <button type="button" class="lb-close" aria-label="Tutup">×</button>
+  <img alt="">
+  <p></p>
+</dialog>
 
 <script>
 /* =====================================================================
@@ -572,7 +650,7 @@ const CONFIG = {
     { code:"GDR-3", name:"Lengan Panjang Leher Bulat", desc:"Baju lengan panjang leher bulat, sesuai untuk lelaki dan wanita. Bunga Collection.",
       price:"RM 55", badge:"Unisex", image:"assets/p-gdr3.jpg", colors:["Maroon"] },
     { code:"", name:"Cetak Baju & Jersi Custom", desc:"Cetak rekaan sendiri untuk sekolah, syarikat, kelab atau program. Harga ikut kuantiti.",
-      price:"Dari RM 28", badge:"Servis Cetak", image:"", pattern:3, colors:["Ikut rekaan"] },
+      price:"Dari RM 26", badge:"Servis Cetak", image:"", pattern:3, colors:["Ikut rekaan"] },
   ],
 };
 /* Nota: senarai saiz di atas hanyalah contoh — tukar ikut stok sebenar.
@@ -646,6 +724,56 @@ const updateDots = () => {
 grid.addEventListener("scroll", () => requestAnimationFrame(updateDots), {passive:true});
 updateDots();
 
+/* ---------- Kalkulator harga (anggaran) ---------- */
+const CALC = {
+  types: [ {name:"T-shirt", add:0}, {name:"Jersi Polo", add:6}, {name:"Lengan Panjang", add:8} ],
+  tiers: [ {min:10, price:34}, {min:30, price:31}, {min:50, price:29}, {min:100, price:26} ], // harga asas sehelai
+};
+let calcType = 1;
+const fmtRM = n => "RM " + n.toLocaleString("ms-MY");
+$("#calcTypes").innerHTML = CALC.types.map((t,i)=>`<button type="button" class="chip" data-t="${i}" aria-pressed="${i===calcType}">${t.name}</button>`).join("");
+$("#calcTiers").innerHTML = CALC.tiers.map(t=>`<div><b>${t.min}+</b>helai</div>`).join("");
+function calc(){
+  const q = +$("#calcQty").value, t = CALC.types[calcType];
+  let ti = 0; CALC.tiers.forEach((x,i)=>{ if (q>=x.min) ti=i; });
+  const each = CALC.tiers[ti].price + t.add;
+  $("#calcQtyOut").textContent = q + " helai";
+  $("#calcEach").textContent = fmtRM(each);
+  $("#calcTotal").textContent = fmtRM(each*q);
+  $$("#calcTiers div").forEach((d,i)=>d.classList.toggle("on", i===ti));
+  return {q, t, each};
+}
+$("#calcTypes").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  calcType = +b.dataset.t;
+  $$("#calcTypes .chip").forEach(c=>c.setAttribute("aria-pressed", c===b)); calc();
+});
+$("#calcQty").addEventListener("input", calc);
+$("#calcSend").addEventListener("click", () => {
+  const {q, t, each} = calc();
+  $("#f-prod").value = "Cetak Baju & Jersi Custom"; fillColors();
+  $("#f-qty").value = q;
+  $("#f-note").value = `Jenis: ${t.name}. Anggaran kalkulator: ${fmtRM(each)} sehelai, jumlah ${fmtRM(each*q)}.`;
+  $("#tempah").scrollIntoView({behavior:"smooth"});
+  setTimeout(()=>$("#f-name").focus({preventScroll:true}), 600);
+  toast("Butiran kalkulator dimasukkan ke borang");
+});
+
+/* ---------- Lightbox ---------- */
+const lb = $("#lightbox");
+const openLb = fig => {
+  const img = $("img", fig);
+  $("img", lb).src = img.src; $("img", lb).alt = img.alt;
+  $("p", lb).textContent = $("figcaption", fig)?.textContent || "";
+  lb.showModal();
+};
+$$(".work figure").forEach(f => {
+  f.addEventListener("click", () => openLb(f));
+  f.addEventListener("keydown", e => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); openLb(f); } });
+});
+$(".lb-close", lb).addEventListener("click", () => lb.close());
+lb.addEventListener("click", e => { if (e.target===lb) lb.close(); });
+
 /* ---------- Order form ---------- */
 document.addEventListener("click", e => {
   if (!e.target.closest("[data-quote]")) return;
@@ -716,6 +844,7 @@ const revObs = new IntersectionObserver(entries => entries.forEach(en => {
 $$(".reveal").forEach((el,i) => { el.style.transitionDelay = (i%4)*60+"ms"; revObs.observe(el); });
 
 $("#yr").textContent = new Date().getFullYear();
+calc();
 </script>
 </body>
 </html>
