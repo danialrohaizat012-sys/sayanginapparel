@@ -91,6 +91,20 @@
   .hero-card{background:var(--black);border-radius:20px;padding:18px;transform:rotate(2deg);box-shadow:10px 10px 0 rgba(0,0,0,.18);transition:transform .3s}
   .hero-card:hover{transform:rotate(0)}
   .hero-img{width:100%;height:auto;aspect-ratio:1024/864;object-fit:cover;object-position:center top;border-radius:12px}
+  .hero-visual{position:relative;width:100%;max-width:500px;aspect-ratio:1/1;justify-self:end}
+  .hv{position:absolute;margin:0;background:#111;border-radius:18px;padding:10px 10px 0;box-shadow:8px 8px 0 rgba(0,0,0,.2);transition:transform .35s ease}
+  .hv img{display:block;width:100%;height:auto;border-radius:10px;object-fit:cover}
+  .hv figcaption{color:#fff;font-weight:800;text-transform:uppercase;font-size:.7rem;letter-spacing:.08em;padding:10px 4px}
+  .hv-back{width:62%;right:0;top:0;transform:rotate(5deg)}
+  .hv-back img{aspect-ratio:1/1}
+  .hv-back figcaption{text-align:right}
+  .hv-front{width:50%;left:2%;bottom:0;transform:rotate(-4deg);z-index:2}
+  .hv-front img{aspect-ratio:4/5;object-position:center top}
+  .hero-visual:hover .hv-back{transform:rotate(7deg) translateY(-4px)}
+  .hero-visual:hover .hv-front{transform:rotate(-6deg) translateY(-4px)}
+  .hv-sticker{position:absolute;right:4%;bottom:6%;z-index:3;width:118px;height:118px;border-radius:50%;background:#111;color:var(--yellow);border:3px solid var(--yellow);box-shadow:0 0 0 3px #111;display:grid;place-content:center;text-align:center;transform:rotate(-12deg);line-height:1.1}
+  .hv-sticker b{font-size:1.25rem;font-weight:900;text-transform:uppercase}
+  .hv-sticker span{font-size:.64rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#fff}
   .hero-card .ph{aspect-ratio:4/5;border-radius:12px;background:repeating-linear-gradient(-45deg,#1c1c1c 0 16px,#232323 16px 32px);display:grid;place-items:center;color:#8a867e;font-size:.76rem;font-weight:600;text-align:center;padding:20px}
   .hero-card .ph img{width:38%;margin:0 auto 14px;filter:invert(79%) sepia(73%) saturate(1200%) hue-rotate(358deg) brightness(103%)}
   .hero-card .cap{display:flex;justify-content:space-between;align-items:center;color:#fff;margin-top:14px;font-weight:800;text-transform:uppercase;font-size:.82rem;letter-spacing:.04em}
@@ -101,7 +115,7 @@
     .hero .ctas{display:grid;grid-template-columns:1fr 1fr}
     .hero .ctas .btn{padding:14px 10px}
     .hero-card{transform:rotate(1.5deg)}
-    .hero-img{aspect-ratio:4/3}
+    .hero-visual{justify-self:center;max-width:400px}.hv-sticker{width:96px;height:96px}.hv-sticker b{font-size:1rem}
   }
   @media (max-width:400px){.hero .ctas{grid-template-columns:1fr}}
 
@@ -335,9 +349,10 @@
         <span>✓ Berdaftar SSM</span><span>✓ Sejak 2023</span><span>✓ Pos seluruh Malaysia</span><span class="tag">#barelokalboh</span>
       </div>
     </div>
-    <div class="hero-card">
-      <img class="hero-img" src="assets/hero-bunga.jpg" alt="Model lelaki dan wanita memakai Bunga Collection V2 berwarna maroon dengan corak bunga di bahu" width="1024" height="864" fetchpriority="high">
-      <div class="cap">Koleksi Terkini <small>Bunga Collection V2</small></div>
+    <div class="hero-visual">
+      <figure class="hv hv-back"><img src="assets/hero-jersi-detail.jpg" alt="Detail kolar dan label jersi sublimasi Sayagin Apparel" width="600" height="600" fetchpriority="high"><figcaption>Jersi Sublimasi</figcaption></figure>
+      <figure class="hv hv-front"><img src="assets/p-polo.jpg" alt="Model memakai polo Bunga Collection berwarna maroon" width="480" height="600"><figcaption>Bunga Collection</figcaption></figure>
+      <div class="hv-sticker" aria-hidden="true"><b>Cetak</b><span>ikut cara anda</span></div>
     </div>
   </div>
 </header>
@@ -482,12 +497,13 @@
       <p>Tak jumpa jawapan? <a class="wa-link" href="#" style="font-weight:800">Tanya kami di WhatsApp</a>.</p>
     </div>
     <div class="reveal">
-      <details><summary>Ada minimum tempahan untuk servis cetak?</summary><p>[Isi kuantiti minimum, jika ada.]</p></details>
-      <details><summary>Ada saiz apa?</summary><p>[Isi senarai saiz anda dan carta ukuran.]</p></details>
-      <details><summary>Berapa lama penghantaran?</summary><p>[Isi anggaran tempoh pos untuk Semenanjung dan Sabah/Sarawak.]</p></details>
-      <details><summary>Boleh buat tempahan kumpulan?</summary><p>Boleh. Isi borang tempahan dengan anggaran kuantiti dan tarikh yang diperlukan, dan kami akan beri sebut harga.</p></details>
-      <details><summary>Boleh ambil sendiri di Pasir Mas?</summary><p>[Isi sama ada pelanggan boleh ambil sendiri, dan lokasinya.]</p></details>
-      <details><summary>Cara bayaran?</summary><p>[Isi kaedah bayaran yang diterima, contoh pindahan bank atau DuitNow QR.]</p></details>
+      <details><summary>Ada minimum tempahan untuk servis cetak?</summary><p>Untuk cetak custom, minimum tempahan ialah 10 helai bagi setiap rekaan. Kuantiti lebih kecil boleh dibincangkan melalui WhatsApp.</p></details>
+      <details><summary>Boleh bantu buat rekaan?</summary><p>Boleh. Pereka kami akan bantu hasilkan rekaan berdasarkan idea, logo atau contoh anda. Draf rekaan pertama adalah percuma untuk tempahan custom.</p></details>
+      <details><summary>Ada saiz apa?</summary><p>Saiz XS hingga 3XL sentiasa tersedia. Saiz 4XL dan 5XL boleh ditempah dengan caj tambahan RM 5 sehelai. Carta ukuran akan dihantar melalui WhatsApp.</p></details>
+      <details><summary>Berapa lama tempahan siap?</summary><p>Koleksi siap pakai dipos dalam 1 hingga 3 hari bekerja. Tempahan cetak custom siap dalam 10 hingga 14 hari bekerja selepas rekaan disahkan. Pos ke Semenanjung mengambil 2 hingga 4 hari, dan Sabah/Sarawak 4 hingga 7 hari.</p></details>
+      <details><summary>Boleh buat tempahan kumpulan?</summary><p>Boleh. Isi borang tempahan dengan anggaran kuantiti dan tarikh yang diperlukan, dan kami akan beri sebut harga. Lebih banyak kuantiti, lebih rendah harga sehelai.</p></details>
+      <details><summary>Boleh ambil sendiri di Pasir Mas?</summary><p>Boleh. Pesanan boleh diambil sendiri di kedai kami di Pasir Mas, Kelantan. Kami akan maklumkan melalui WhatsApp bila pesanan sedia untuk diambil.</p></details>
+      <details><summary>Cara bayaran?</summary><p>Kami terima pindahan bank online dan DuitNow QR. Untuk tempahan custom, deposit 50% diperlukan sebelum produksi bermula dan baki dibayar sebelum penghantaran.</p></details>
     </div>
   </div>
 </section>
