@@ -169,6 +169,17 @@
   .svc-list b{display:block;text-transform:uppercase;font-weight:900;font-size:.92rem}
   .svc-list span{color:var(--muted);font-size:.88rem;font-weight:500}
 
+  .work{margin-top:48px}
+  .work-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .work-head h3{font-size:1.3rem}
+  .work-head span{font-size:.76rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:640px){.work-grid{grid-template-columns:1fr}}
+  .work figure{border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;background:#111}
+  .work img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .4s}
+  .work figure:hover img{transform:scale(1.03)}
+  .work figcaption{background:#111;color:var(--yellow);font-weight:800;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;padding:12px 14px;border-top:2px solid var(--ink)}
+
   /* ---------- Tentang ---------- */
   .about{background:var(--surface);border-block:2px solid var(--line)}
   .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
@@ -357,8 +368,15 @@
         <li><b>Baju & T-shirt</b><span>Cetak logo, nama atau rekaan anda sendiri.</span></li>
         <li><b>Jersi sublimasi</b><span>Kolar polo atau leher bulat, lengan pendek atau panjang.</span></li>
         <li><b>Baju korporat & sekolah</b><span>Sedondon untuk pejabat, sekolah, persatuan atau keluarga.</span></li>
-        <li><b>Tempahan kumpulan</b><span>Harga ikut kuantiti. Beritahu kami tarikh yang diperlukan.</span></li>
+        <li><b>Tempahan kumpulan</b><span>Anggaran dari RM 28/helai, bergantung pada kuantiti. Beritahu kami tarikh yang diperlukan.</span></li>
       </ul>
+    </div>
+    <div class="work reveal">
+      <div class="work-head"><h3>Hasil cetakan kami</h3><span>Rekabentuk keluaran terhad · Air tangan Anak Malaysia</span></div>
+      <div class="work-grid">
+        <figure><img src="assets/work-jersi-1.jpg" alt="Jersi polo hitam dan emas cetakan sublimasi Sayagin Apparel" loading="lazy"><figcaption>Jersi polo sublimasi · Hitam &amp; emas</figcaption></figure>
+        <figure><img src="assets/work-jersi-2.jpg" alt="Jersi polo motorsport hitam dan hijau cetakan sublimasi Sayagin Apparel" loading="lazy"><figcaption>Jersi polo sublimasi · Motorsport</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -375,7 +393,7 @@
     </div>
     <div class="grid" id="grid"></div>
     <div class="dots" id="dots" aria-hidden="true"></div>
-    <p class="disclaimer">Gambar sekadar ilustrasi. Rekaan keluaran terhad, air tangan Anak Malaysia.</p>
+    <p class="disclaimer">Gambar sekadar ilustrasi. Harga ialah anggaran dan tertakluk kepada pengesahan. Rekaan keluaran terhad, air tangan Anak Malaysia.</p>
   </div>
 </section>
 
@@ -532,13 +550,13 @@ const CONFIG = {
   states: ["Kelantan","Terengganu","Pahang","Kedah","Perlis","Pulau Pinang","Perak","Selangor","W.P. Kuala Lumpur","W.P. Putrajaya","Negeri Sembilan","Melaka","Johor","Sabah","Sarawak","W.P. Labuan"],
   products: [
     { code:"V2", name:"Polo Kolar Bunga", desc:"Polo lengan pendek, kolar hitam dengan corak bunga di bahu. Bunga Collection V2.",
-      price:"RM __", badge:"Lelaki", image:"assets/p-polo.jpg", colors:["Maroon"] },
+      price:"RM 49", badge:"Lelaki", image:"assets/p-polo.jpg", colors:["Maroon"] },
     { code:"GDR-2", name:"Blaus Muslimah Bunga", desc:"Blaus labuh lengan panjang, potongan longgar dan sopan. Bunga Collection.",
-      price:"RM __", badge:"Muslimah", image:"assets/p-gdr2.jpg", colors:["Maroon"] },
+      price:"RM 59", badge:"Muslimah", image:"assets/p-gdr2.jpg", colors:["Maroon"] },
     { code:"GDR-3", name:"Lengan Panjang Leher Bulat", desc:"Baju lengan panjang leher bulat, sesuai untuk lelaki dan wanita. Bunga Collection.",
-      price:"RM __", badge:"Unisex", image:"assets/p-gdr3.jpg", colors:["Maroon"] },
+      price:"RM 55", badge:"Unisex", image:"assets/p-gdr3.jpg", colors:["Maroon"] },
     { code:"", name:"Cetak Baju & Jersi Custom", desc:"Cetak rekaan sendiri untuk sekolah, syarikat, kelab atau program. Harga ikut kuantiti.",
-      price:"Ikut kuantiti", badge:"Servis Cetak", image:"", pattern:3, colors:["Ikut rekaan"] },
+      price:"Dari RM 28", badge:"Servis Cetak", image:"", pattern:3, colors:["Ikut rekaan"] },
   ],
 };
 /* Nota: senarai saiz di atas hanyalah contoh — tukar ikut stok sebenar.
@@ -575,7 +593,7 @@ CONFIG.products.forEach((p, i) => {
       <p>${p.desc}</p>
       <div><div class="opt-label">Saiz</div><div class="chips">${sizeChips}</div></div>
       <div><div class="opt-label">Warna</div><div class="chips">${colorChips}</div></div>
-      <div class="row"><span class="price"><small>Harga</small>${p.price}</span>
+      <div class="row"><span class="price"><small>Harga anggaran</small>${p.price}</span>
         <button type="button" class="btn btn-yellow btn-sm" data-order="${i}">Tempah</button></div>
     </div>`;
   grid.appendChild(card);
